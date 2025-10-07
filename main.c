@@ -19,7 +19,7 @@ int fib_length_iter(int n) {
 }
 
 int main(void) {
-  int count = 5; /* можно увеличить при необходимости */
+  int count = 20; /* можно увеличить при необходимости */
   if (count < 1)
     return 0;
   if (count == 1) {
@@ -77,11 +77,11 @@ int main(void) {
 
   for (int i = 0; i < count; ++i) {
     size_t len = strlen(fibs[i]);
-    printf("F[%d] (len=%zu): %s\n", i, len, fibs[i]); /* отладочный вывод */
+    // printf("F[%d] (len=%zu): %s\n", i, len, fibs[i]); /* отладочный вывод */
     for (size_t k = 0; k < len; ++k) {
       char bit = fibs[i][k];
       if (bit == '1')
-        byte |= (uint8_t)(1u << bits_count);
+        byte |= (uint8_t)(1u << (7 - bits_count));
       bits_count++;
       if (bits_count == 8) {
         if (fwrite(&byte, sizeof(uint8_t), 1, file) != 1) {
@@ -95,9 +95,9 @@ int main(void) {
         bits_count = 0;
         byte = 0;
       }
-      putchar(bit); /* опционально: печатаем биты в терминал */
+      // putchar(bit); /* опционально: печатаем биты в терминал */
     }
-    putchar('\n');
+    // putchar('\n');
   }
 
   if (bits_count > 0) {
