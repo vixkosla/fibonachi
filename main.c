@@ -19,7 +19,7 @@ int fib_length_iter(int n) {
 }
 
 int main(void) {
-  int count = 20; /* можно увеличить при необходимости */
+  int count = 64; /* можно увеличить при необходимости */
   if (count < 1)
     return 0;
   if (count == 1) {
